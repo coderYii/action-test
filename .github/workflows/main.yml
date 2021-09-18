@@ -10,8 +10,8 @@ jobs:
     # 让K8s应用deployment
     - uses: actions/checkout@master
     - run: |
-        sudo echo '82.156.192.56 yii.k8s' | sudo tee -a /etc/hosts
-        cat /etc/hosts
+        sudo echo "82.156.192.56 yii.k8s" | sudo tee -a /etc/hosts
+        curl 82.156.192.56:30180 -v
     - name: deploy to cluster
       uses: steebchen/kubectl@v2.0.0
       with: # defaults to latest kubectl binary version
