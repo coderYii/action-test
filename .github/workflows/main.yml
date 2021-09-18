@@ -15,4 +15,5 @@ jobs:
       uses: steebchen/kubectl@v2.0.0
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
+        version: v1.21.4
         command: version
