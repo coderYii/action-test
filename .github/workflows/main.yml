@@ -1,0 +1,19 @@
+name: deploy-k8s
+on:
+  push:
+      branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # 让K8s应用deployment
+    - run: |
+        sudo echo '82.156.192.56 yii.k8s' | sudo tee -a /etc/hosts
+    - name: start to k8s
+      uses: steebchen/kubectl@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        KUBECTL_VERSION: "1.21.4"
+      with:
+        args: get node 
