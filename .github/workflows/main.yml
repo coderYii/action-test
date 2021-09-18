@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # 让K8s应用deployment
-    - run: |
-        sudo echo "82.156.192.56 yii.k8s" | sudo tee -a /etc/hosts
-        curl yii.k8s:30180 -v
+    # - run: |
+        # sudo echo "82.156.192.56 yii.k8s" | sudo tee -a /etc/hosts
+        # curl yii.k8s:30180 -v
     - uses: actions/checkout@master
     - name: deploy to cluster
       uses: coderYii/kubectl@v2.0.0-y
@@ -18,3 +18,4 @@ jobs:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         version: v1.21.4
         command: get nodes
+        myHosts: ${{ secrets.KUBE_HOSTS_CONFIG}}
