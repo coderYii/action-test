@@ -13,7 +13,7 @@ jobs:
         curl yii.k8s:30180 -v
     - uses: actions/checkout@master
     - name: deploy to cluster
-      uses: steebchen/kubectl@v2.0.0
+      uses: coderYii/kubectl@v2.0.0-y
       with: # defaults to latest kubectl binary version
         arg: --network=host
         config: ${{ secrets.KUBE_CONFIG_DATA }}
