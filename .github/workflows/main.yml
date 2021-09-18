@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # 让K8s应用deployment
+    - uses: actions/checkout@v2
     - run: |
         sudo echo '82.156.192.56 yii.k8s' | sudo tee -a /etc/hosts
-    - name: start to k8s
-      uses: steebchen/kubectl@master
+    - name: Trigger deploy
+      uses: Consensys/kubernetes-action@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        KUBECTL_VERSION: "1.21.4"
       with:
-        args: get node 
+        args: get node
