@@ -8,12 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # 让K8s应用deployment
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - run: |
         sudo echo '82.156.192.56 yii.k8s' | sudo tee -a /etc/hosts
-    - name: Trigger deploy
-      uses: Consensys/kubernetes-action@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      with:
-        args: version
+    - name: deploy to cluster
+      uses: steebchen/kubectl@v2.0.0
+      with: # defaults to latest kubectl binary version
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: version
