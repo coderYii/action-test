@@ -28,4 +28,6 @@ jobs:
         echo $TIME $F_TIME
         echo $F_TIME > currentTime.txt
     - name: print time
-      run: cat currentTime.txt
+      run: |
+        currentTime=$(cat currentTime.txt)
+        echo $currentTime
