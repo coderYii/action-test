@@ -28,5 +28,5 @@ jobs:
         echo $TIME $F_TIME
         currentTime=$F_TIME
     - name: print time
-      run: echo ${{ currentTime }}
+      run: echo $current-time  $F_TIME
       
