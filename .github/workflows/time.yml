@@ -26,4 +26,4 @@ jobs:
         F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
       run: echo $TIME $F_TIME
     - name: print time
-      run: echo $F_TIME
+      run: echo ${{ github.time }}
