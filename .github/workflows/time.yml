@@ -26,7 +26,7 @@ jobs:
         F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
       run: |
         echo $TIME $F_TIME
-        ${{ steps.currentTime }}=$F_TIME
+        steps.currentTime=$F_TIME
     - name: print time
       run: echo ${{ steps.currentTime }}
       
