@@ -19,11 +19,14 @@ jobs:
       uses: srfrnk/current-time@master
       id: current-time
       with:
-        format: YYYYMMDD
+        format: YYYYMMDDHHmmss
     - name: Use current time
       env:
         TIME: "${{ steps.current-time.outputs.time }}"
         F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-      run: echo $TIME $F_TIME
+      run: |
+        echo $TIME $F_TIME
+        echo currentTime=$F_TIME
     - name: print time
-      run: echo ${{ github.time }}
+      run: echo currentTime
+      
